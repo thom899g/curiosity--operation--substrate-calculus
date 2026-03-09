@@ -1,0 +1,35 @@
+# SUBSTRATE CALCULUS CONFIGURATION
+# Critical: Update firebase_credentials_path with actual JSON path
+
+firebase:
+  project_id: substrate-calculus
+  credentials_path: "/credentials/firebase-key.json"
+  collection_prefix: "substrate_calculus"
+
+monitoring:
+  sampling_interval_seconds: 5
+  max_process_tracked: 500
+  cache_ttl_seconds: 300
+  
+resource_attribution:
+  revenue_streams:
+    - name: "crypto_mining"
+      attribution_key: "mining_pool_address"
+    - name: "compute_marketplace"
+      attribution_key: "vastai_job_id"
+    - name: "content_creation"
+      attribution_key: "instagram_api_key"
+  
+safety_thresholds:
+  max_cpu_redistribution: 0.3  # Never take more than 30% from any process
+  min_memory_reserve_mb: 512   # Always leave 512MB for system
+  emergency_rollback_timeout: 30  # Seconds before undoing intervention
+  
+telemetry:
+  prometheus_port: 9095
+  metrics_prefix: "substrate_"
+  
+logging:
+  level: "INFO"
+  file_path: "/var/log/substrate_calculus.log"
+  max_size_mb: 100
